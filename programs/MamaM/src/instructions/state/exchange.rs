@@ -1,12 +1,22 @@
 use anchor_lang::prelude::*;
 use solana_program::pubkey::Pubkey;
 
+use super::EmaConfig;
+
 #[account]
 #[derive(Default)]
 pub struct Exchange {
     pub authority: Pubkey,
 
     pub markets: Vec<MarketData>,
+    pub amms: Vec<AmmData>,
+}
+
+#[derive(Clone, AnchorSerialize, AnchorDeserialize)]
+pub struct AmmData {
+    pub address: Pubkey,
+    pub market_address: Pubkey,
+    pub config: EmaConfig,
 }
 
 #[derive(Clone, AnchorSerialize, AnchorDeserialize)]
