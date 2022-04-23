@@ -287,6 +287,7 @@ export default function initializeMarket(context: Context): Promise<TransactionS
                     serumDexProgram: SERUM_DEX_PROGRAM_ID,
                 },
             }).then((res) => {
+                console.log("market: ", marketAccount.publicKey.toString());
                 resolve(res as TransactionSignature)
             }).catch((err) => reject(err))
 
