@@ -31,6 +31,16 @@ export default function placeOrder(context: Context,
 
         let serumMarket = await getSerumMarket(context, marketAddress);
 
+        let [serumOpenOrders,] = await anchor.web3.PublicKey.findProgramAddress(
+            [
+                Buffer.from("serum_open_orders"),
+                exchange.toBuffer(),
+                marketAddress.toBuffer(),
+                context.provider.wallet.publicKey.toBuffer()
+            ],
+            context.program.programId
+        );
+
         // Add your test here.
         context.program.rpc.placeOrder(
             new anchor.BN(side),
@@ -44,7 +54,7 @@ export default function placeOrder(context: Context,
                     market:
                         marketAddress,
                     openOrders:
-                        openOrdersAccount,
+                        serumOpenOrders,
                     requestQueue:
                         serumMarket.decoded
                             .requestQueue,
