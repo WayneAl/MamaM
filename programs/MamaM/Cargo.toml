@@ -15,4 +15,5 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = "0.18.2"
+anchor-lang = "0.24.2"
+serum_dex = { version = "0.5.4", git = "https://github.com/blockworks-foundation/serum-dex.git", default-features=false, features = ["no-entrypoint", "program"] }
