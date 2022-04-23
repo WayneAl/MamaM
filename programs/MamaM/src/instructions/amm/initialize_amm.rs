@@ -33,5 +33,7 @@ pub fn handle(ctx: Context<InitializeAmm>, _bump: u8, config: EmaConfig) -> Prog
     let exchange = &mut ctx.accounts.exchange;
     let amm = &mut ctx.accounts.amm;
 
+    amm.config = config;
+
     Ok(())
 }

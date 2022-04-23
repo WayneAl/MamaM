@@ -5,13 +5,13 @@ mod utils;
 use anchor_lang::prelude::*;
 use instructions::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("9458qWTEKJxEWTCaFTCrz4w3HdgT8LxRpHieGRLXSnwQ");
 
 #[program]
-pub mod mama_m {
+pub mod mamam {
     use super::*;
-    pub fn initialize_exchange(ctx: Context<InitializeExchange>) -> ProgramResult {
-        initialize_exchange::handle(ctx)
+    pub fn initialize_exchange(ctx: Context<InitializeExchange>, bump: u8) -> ProgramResult {
+        initialize_exchange::handle(ctx, bump)
     }
 
     pub fn initialize_market(
