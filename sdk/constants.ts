@@ -6,5 +6,14 @@ export enum SolanaEndpoint {
     Testnet = "https://api.testnet.solana.com"
 }
 
+// Serum market constants
+export const COIN_LOT_SIZE: number = 1;
+export const PC_LOT_SIZE: number = 1;
+export const PC_DUST_THRESHOLD: number = 2;
 
-export const ProgramID = new PublicKey("9458qWTEKJxEWTCaFTCrz4w3HdgT8LxRpHieGRLXSnwQ");
+export const ProgramID = new PublicKey("AYNnLtb3oTu9KWLuiaGzDQs4NKmUqJ73FP8w4rg5e3zP");
+
+export const SERUM_DEX_PROGRAM_ID = new PublicKey("DESVgJVGajEgKGXhb6XmqDHGz3VjdgP7rEVESBgxmroY");
+
+export const BTC = new PublicKey("8Kq8uW5HQ7Ge2zhyYns9k1yMNaHy6tfWfFJPjhqxgTVE");
+export const USDC = new PublicKey("GTc2YHEFLW7ZgGxBtSCMMGXK9RDJHA6q5YWPdSjU9fsM");

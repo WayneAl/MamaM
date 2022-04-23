@@ -1,11 +1,13 @@
+mod constants;
 mod errors;
 mod instructions;
 mod macros;
 mod utils;
+
 use anchor_lang::prelude::*;
 use instructions::*;
 
-declare_id!("9458qWTEKJxEWTCaFTCrz4w3HdgT8LxRpHieGRLXSnwQ");
+declare_id!("AYNnLtb3oTu9KWLuiaGzDQs4NKmUqJ73FP8w4rg5e3zP");
 
 #[program]
 pub mod mamam {
@@ -16,11 +18,12 @@ pub mod mamam {
 
     pub fn initialize_market(
         ctx: Context<InitializeMarket>,
-        serum_data: SerumData,
-        asset_data_1: AssetData,
-        asset_data_2: AssetData,
+        vault_signer_nonce: u64,
+        // serum_data: SerumData,
+        // asset_data_1: AssetData,
+        // asset_data_2: AssetData
     ) -> ProgramResult {
-        initialize_market::handle(ctx, serum_data, asset_data_1, asset_data_2)
+        initialize_market::handle(ctx, vault_signer_nonce)
     }
 
     pub fn place_order(

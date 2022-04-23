@@ -17,7 +17,7 @@ pub struct AmmData {
     pub config: EmaConfig,
 }
 
-#[derive(Clone, AnchorSerialize, AnchorDeserialize)]
+#[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)]
 pub struct MarketData {
     pub address: Pubkey,
     pub pair_name: String,
@@ -25,7 +25,7 @@ pub struct MarketData {
     pub asset_2: AssetData,
 }
 
-#[derive(Clone, AnchorSerialize, AnchorDeserialize)]
+#[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)]
 pub struct AssetData {
     pub symbol: Symbol,
     pub token_mint: Pubkey,
