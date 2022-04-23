@@ -5,14 +5,14 @@ import { ProgramID, SolanaEndpoint } from "./constants";
 import { readJsonFile } from './utils/generic';
 import { MamamIDL } from './types/mamam-types';
 import Mamam from '../target/idl/mamam.json';
-import { Wallet } from "@project-serum/anchor";
+import { Wallet } from "@project-serum/anchor/dist/cjs/provider";
 
 require('dotenv').config();
 
 export function loadWalletFromEnv(): anchor.Wallet {
     let wallet = process.env.WALLET! as string;
     let keypair = Keypair.fromSecretKey(new Uint8Array(readJsonFile<any>(wallet)));
-    return new Wallet(keypair);
+    return new anchor.Wallet(keypair);
 }
 
 export function initializeContext(
