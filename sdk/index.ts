@@ -10,7 +10,7 @@ import { Wallet } from "@project-serum/anchor/dist/cjs/provider";
 require('dotenv').config();
 
 export function loadWalletFromEnv(): anchor.Wallet {
-    let wallet = process.env.WALLET! as string;
+    let wallet = process.env["WALLET"] as string;
     let keypair = Keypair.fromSecretKey(new Uint8Array(readJsonFile<any>(wallet)));
     return new anchor.Wallet(keypair);
 }

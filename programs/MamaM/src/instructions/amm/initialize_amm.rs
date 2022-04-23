@@ -21,10 +21,16 @@ pub struct InitializeAmm<'info> {
     )]
     pub amm: Account<'info, Amm>,
 
+    pub vault_1: AccountInfo<'info>,
+    pub vault_2: AccountInfo<'info>,
+
     pub market: AccountInfo<'info>,
+
+    pub oracle: AccountInfo<'info>, //TODO: get oracle data from Pyth
 
     #[account(mut, signer)]
     pub payer: AccountInfo<'info>,
+
     pub system_program: Program<'info, System>,
     pub rent: Sysvar<'info, Rent>,
 }
@@ -34,6 +40,8 @@ pub fn handle(ctx: Context<InitializeAmm>, _bump: u8, config: EmaConfig) -> Prog
     let amm = &mut ctx.accounts.amm;
 
     amm.config = config;
+
+    amm.timestamp = Clock::get().unwrap().unix_timestamp as u64;
 
     Ok(())
 }

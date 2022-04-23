@@ -26,6 +26,11 @@ pub mod mamam {
         initialize_market::handle(ctx, vault_signer_nonce)
     }
 
+    pub fn init_user_on_market(ctx: Context<InitUserOnMarket>, bump: u8) -> ProgramResult {
+        init_user_on_market::handle(ctx, bump)
+    }
+
+    // Order
     pub fn place_order(
         ctx: Context<PlaceOrderContext>,
         side: u8,
@@ -34,5 +39,18 @@ pub mod mamam {
         max_pc_qty: u64,
     ) -> ProgramResult {
         place_order::handle(ctx, side, limit, max_coin_qty, max_pc_qty)
+    }
+
+    // AMM
+    pub fn initialize_amm(
+        ctx: Context<InitializeAmm>,
+        bump: u8,
+        config: EmaConfig,
+    ) -> ProgramResult {
+        amm::initialize_amm::handle(ctx, bump, config)
+    }
+
+    pub fn update_price(ctx: Context<UpdatePrice>) -> ProgramResult {
+        amm::update_price::handle(ctx)
     }
 }

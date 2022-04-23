@@ -17,3 +17,5 @@ export const SERUM_DEX_PROGRAM_ID = new PublicKey("DESVgJVGajEgKGXhb6XmqDHGz3Vjd
 
 export const BTC = new PublicKey("8Kq8uW5HQ7Ge2zhyYns9k1yMNaHy6tfWfFJPjhqxgTVE");
 export const USDC = new PublicKey("GTc2YHEFLW7ZgGxBtSCMMGXK9RDJHA6q5YWPdSjU9fsM");
+export const BTC_ORACLE = new PublicKey("HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J");
+export const USDC_ORACLE = new PublicKey("5SSkXsEKQepHHAewytPVwdej4epN1nxgLVM84L4KXgy7");
