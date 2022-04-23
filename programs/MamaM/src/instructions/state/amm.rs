@@ -29,7 +29,10 @@ impl Ema {
     }
 
     /// update Ema
-    pub fn next(price: f64) {
+    pub fn next(&mut self, price: f64) {
         // calculation
+        let alpha: f64 = (2 / (self.length + 1)) as f64;
+        self.value = ((alpha * price + (1 as f64 - alpha) * (self.value as f64)) * (10 ^ 6) as f64)
+            .round() as u64;
     }
 }
