@@ -1,5 +1,6 @@
 import { PublicKey } from "@solana/web3.js";
-import { initializeContext, loadWalletFromEnv } from "..";
+import initializeContext from "../initializeContext";
+import { loadWalletFromEnv } from "../initializeContext";
 import initUserOnMarket from "../instructions/initUserOnMarket";
 
 

@@ -1,6 +1,8 @@
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::entrypoint::ProgramResult;
+use pyth_client::PriceConf;
 
+use crate::f_to_u_repr;
 use crate::instructions::state::{Amm, Exchange};
 
 #[derive(Accounts)]
@@ -54,8 +56,38 @@ pub fn handle(
     amm.length = length;
     amm.time_granularity = time_granularity;
     amm.range = range;
-
     amm.timestamp = Clock::get().unwrap().unix_timestamp as u64;
+
+    let price_1 = {
+        let oracle_data = ctx.accounts.oracle_1.try_borrow_data()?;
+        let price_account = pyth_client::load_price(&oracle_data).unwrap();
+
+        let price: PriceConf = price_account.get_current_price().unwrap();
+        msg!(
+            "price: ({} +- {}) x 10^{}",
+            price.price,
+            price.conf,
+            price.expo
+        );
+        price.price
+    };
+    let price_2 = {
+        let oracle_data = ctx.accounts.oracle_2.try_borrow_data()?;
+        let price_account = pyth_client::load_price(&oracle_data).unwrap();
+
+        let price: PriceConf = price_account.get_current_price().unwrap();
+        msg!(
+            "price: ({} +- {}) x 10^{}",
+            price.price,
+            price.conf,
+            price.expo
+        );
+        price.price
+    };
+
+    amm.ema = f_to_u_repr!(price_1 as f32 / price_2 as f32);
+
+    msg!("{:?}", amm);
 
     Ok(())
 }

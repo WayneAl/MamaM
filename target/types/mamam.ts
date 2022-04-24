@@ -335,6 +335,16 @@ export type Mamam = {
       "name": "updatePrice",
       "accounts": [
         {
+          "name": "exchange",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "amm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "oracle1",
           "isMut": false,
           "isSigner": false
@@ -870,6 +880,16 @@ export const IDL: Mamam = {
     {
       "name": "updatePrice",
       "accounts": [
+        {
+          "name": "exchange",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "amm",
+          "isMut": true,
+          "isSigner": false
+        },
         {
           "name": "oracle1",
           "isMut": false,

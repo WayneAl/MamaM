@@ -15,7 +15,7 @@ export function loadWalletFromEnv(): anchor.Wallet {
     return new anchor.Wallet(keypair);
 }
 
-export function initializeContext(
+export default function initializeContext(
     wallet: Wallet,
     endpoint: SolanaEndpoint = SolanaEndpoint.Devnet
 ): Promise<Context> {

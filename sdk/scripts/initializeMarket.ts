@@ -1,4 +1,5 @@
-import { initializeContext, loadWalletFromEnv } from "..";
+import initializeContext from "../initializeContext";
+import { loadWalletFromEnv } from "../initializeContext";
 import initializeMarket from "../instructions/initializeMarket";
 
 

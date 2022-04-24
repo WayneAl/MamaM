@@ -1,6 +1,8 @@
 use anchor_lang::prelude::*;
 use solana_program::pubkey::Pubkey;
 
+use crate::u_to_f_repr;
+
 #[account]
 #[derive(Default)]
 pub struct Exchange {
@@ -44,6 +46,7 @@ impl Exchange {
 }
 
 #[account]
+#[derive(Debug)]
 pub struct Amm {
     pub market: MarketData,
 
@@ -59,14 +62,12 @@ impl Amm {
     pub fn to_string(&self) -> String {
         self.length.to_string() + &self.time_granularity.to_string() + &self.range.to_string()
     }
-}
 
-// impl Amm {
-//     /// update Ema
-//     pub fn ema_next(&mut self, price: f64, timestamp: u64) {
-//         // calculation
-//         let alpha: f64 = (2 / (self.length + 1)) as f64;
-//         self.value = ((alpha * price + (1 as f64 - alpha) * (self.value as f64)) * (10 ^ 6) as f64)
-//             .round() as u64;
-//     }
-// }
+    /// update Ema
+    pub fn ema_next(&mut self, price: f32) -> f32 {
+        // calculation
+        let alpha = 2_f32 / (self.length + 1) as f32;
+        let ema = alpha * price + (1_f32 - alpha) * u_to_f_repr!(self.ema);
+        ema
+    }
+}

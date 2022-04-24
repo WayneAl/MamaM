@@ -28,7 +28,7 @@ const MINT_DATA_LENGTH = MintLayout.span;
  * Helper function to do the requests to get the different balance exemptions for the different
  * data length constants at runtime
  */
-function getMinimumRentBalances(context: Context): Promise<{ [size: string]: number }> {
+export function getMinimumRentBalances(context: Context): Promise<{ [size: string]: number }> {
     return new Promise((resolve, reject) => {
         let exemptionBalances: { [size: number]: number } = {};
         Promise.all([
@@ -175,7 +175,7 @@ function initializeAccountsWithLayouts2(context: Context,
 }
 
 
-function deriveVaultNonce(
+export function deriveVaultNonce(
     marketKey: PublicKey,
     dexProgramId: PublicKey,
     nonceS: number = 0
