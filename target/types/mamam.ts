@@ -518,9 +518,29 @@ export type Mamam = {
         "kind": "struct",
         "fields": [
           {
-            "name": "market",
+            "name": "marketData",
             "type": {
               "defined": "MarketData"
+            }
+          },
+          {
+            "name": "market",
+            "type": "publicKey"
+          },
+          {
+            "name": "pairName",
+            "type": "string"
+          },
+          {
+            "name": "asset1",
+            "type": {
+              "defined": "AssetData"
+            }
+          },
+          {
+            "name": "asset2",
+            "type": {
+              "defined": "AssetData"
             }
           },
           {
@@ -1197,9 +1217,29 @@ export const IDL: Mamam = {
         "kind": "struct",
         "fields": [
           {
-            "name": "market",
+            "name": "marketData",
             "type": {
               "defined": "MarketData"
+            }
+          },
+          {
+            "name": "market",
+            "type": "publicKey"
+          },
+          {
+            "name": "pairName",
+            "type": "string"
+          },
+          {
+            "name": "asset1",
+            "type": {
+              "defined": "AssetData"
+            }
+          },
+          {
+            "name": "asset2",
+            "type": {
+              "defined": "AssetData"
             }
           },
           {

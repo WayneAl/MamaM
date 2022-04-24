@@ -55,6 +55,7 @@ pub fn handle(
 
     amm.vault_1 = ctx.accounts.vault_1.key();
     amm.vault_2 = ctx.accounts.vault_2.key();
+    amm.market = ctx.accounts.market.key();
 
     amm.length = length;
     amm.time_granularity = time_granularity;
