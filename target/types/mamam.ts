@@ -287,7 +287,12 @@ export type Mamam = {
           "isSigner": false
         },
         {
-          "name": "oracle",
+          "name": "oracle1",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "oracle2",
           "isMut": false,
           "isSigner": false
         },
@@ -313,10 +318,16 @@ export type Mamam = {
           "type": "u8"
         },
         {
-          "name": "config",
-          "type": {
-            "defined": "EmaConfig"
-          }
+          "name": "length",
+          "type": "u64"
+        },
+        {
+          "name": "timeGranularity",
+          "type": "u64"
+        },
+        {
+          "name": "range",
+          "type": "u64"
         }
       ]
     },
@@ -386,10 +397,16 @@ export type Mamam = {
             "type": "u64"
           },
           {
-            "name": "config",
-            "type": {
-              "defined": "EmaConfig"
-            }
+            "name": "length",
+            "type": "u64"
+          },
+          {
+            "name": "timeGranularity",
+            "type": "u64"
+          },
+          {
+            "name": "range",
+            "type": "u64"
           }
         ]
       }
@@ -432,12 +449,6 @@ export type Mamam = {
           {
             "name": "marketAddress",
             "type": "publicKey"
-          },
-          {
-            "name": "config",
-            "type": {
-              "defined": "EmaConfig"
-            }
           }
         ]
       }
@@ -488,22 +499,6 @@ export type Mamam = {
           {
             "name": "spotOracle",
             "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "EmaConfig",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "length",
-            "type": "u64"
-          },
-          {
-            "name": "timeGranularity",
-            "type": "u64"
           }
         ]
       }
@@ -828,7 +823,12 @@ export const IDL: Mamam = {
           "isSigner": false
         },
         {
-          "name": "oracle",
+          "name": "oracle1",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "oracle2",
           "isMut": false,
           "isSigner": false
         },
@@ -854,10 +854,16 @@ export const IDL: Mamam = {
           "type": "u8"
         },
         {
-          "name": "config",
-          "type": {
-            "defined": "EmaConfig"
-          }
+          "name": "length",
+          "type": "u64"
+        },
+        {
+          "name": "timeGranularity",
+          "type": "u64"
+        },
+        {
+          "name": "range",
+          "type": "u64"
         }
       ]
     },
@@ -927,10 +933,16 @@ export const IDL: Mamam = {
             "type": "u64"
           },
           {
-            "name": "config",
-            "type": {
-              "defined": "EmaConfig"
-            }
+            "name": "length",
+            "type": "u64"
+          },
+          {
+            "name": "timeGranularity",
+            "type": "u64"
+          },
+          {
+            "name": "range",
+            "type": "u64"
           }
         ]
       }
@@ -973,12 +985,6 @@ export const IDL: Mamam = {
           {
             "name": "marketAddress",
             "type": "publicKey"
-          },
-          {
-            "name": "config",
-            "type": {
-              "defined": "EmaConfig"
-            }
           }
         ]
       }
@@ -1029,22 +1035,6 @@ export const IDL: Mamam = {
           {
             "name": "spotOracle",
             "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "EmaConfig",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "length",
-            "type": "u64"
-          },
-          {
-            "name": "timeGranularity",
-            "type": "u64"
           }
         ]
       }

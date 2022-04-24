@@ -287,7 +287,12 @@
           "isSigner": false
         },
         {
-          "name": "oracle",
+          "name": "oracle1",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "oracle2",
           "isMut": false,
           "isSigner": false
         },
@@ -313,10 +318,16 @@
           "type": "u8"
         },
         {
-          "name": "config",
-          "type": {
-            "defined": "EmaConfig"
-          }
+          "name": "length",
+          "type": "u64"
+        },
+        {
+          "name": "timeGranularity",
+          "type": "u64"
+        },
+        {
+          "name": "range",
+          "type": "u64"
         }
       ]
     },
@@ -386,10 +397,16 @@
             "type": "u64"
           },
           {
-            "name": "config",
-            "type": {
-              "defined": "EmaConfig"
-            }
+            "name": "length",
+            "type": "u64"
+          },
+          {
+            "name": "timeGranularity",
+            "type": "u64"
+          },
+          {
+            "name": "range",
+            "type": "u64"
           }
         ]
       }
@@ -432,12 +449,6 @@
           {
             "name": "marketAddress",
             "type": "publicKey"
-          },
-          {
-            "name": "config",
-            "type": {
-              "defined": "EmaConfig"
-            }
           }
         ]
       }
@@ -488,22 +499,6 @@
           {
             "name": "spotOracle",
             "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "EmaConfig",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "length",
-            "type": "u64"
-          },
-          {
-            "name": "timeGranularity",
-            "type": "u64"
           }
         ]
       }

@@ -45,9 +45,11 @@ pub mod mamam {
     pub fn initialize_amm(
         ctx: Context<InitializeAmm>,
         bump: u8,
-        config: EmaConfig,
+        length: u64,
+        time_granularity: u64,
+        range: u64,
     ) -> ProgramResult {
-        amm::initialize_amm::handle(ctx, bump, config)
+        amm::initialize_amm::handle(ctx, bump, length, time_granularity, range)
     }
 
     pub fn update_price(ctx: Context<UpdatePrice>) -> ProgramResult {

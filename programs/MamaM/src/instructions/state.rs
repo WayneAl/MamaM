@@ -14,7 +14,6 @@ pub struct Exchange {
 pub struct AmmData {
     pub address: Pubkey,
     pub market_address: Pubkey,
-    pub config: EmaConfig,
 }
 
 #[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)]
@@ -50,18 +49,15 @@ pub struct Amm {
 
     pub ema: u64,
     pub timestamp: u64, // in secs
-    pub config: EmaConfig,
-}
 
-#[derive(Clone, Debug, PartialEq, AnchorSerialize, AnchorDeserialize)]
-pub struct EmaConfig {
     pub length: u64,
     pub time_granularity: u64, // in secs
+    pub range: u64,            // in bps (f_to_u)
 }
 
-impl EmaConfig {
+impl Amm {
     pub fn to_string(&self) -> String {
-        self.length.to_string() + &self.time_granularity.to_string()
+        self.length.to_string() + &self.time_granularity.to_string() + &self.range.to_string()
     }
 }
 
