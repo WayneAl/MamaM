@@ -1,14 +1,12 @@
-import { PublicKey } from "@solana/web3.js";
+import { MARKET } from "../constants";
 import initializeContext from "../initializeContext";
 import { loadWalletFromEnv } from "../initializeContext";
 import initUserOnMarket from "../instructions/initUserOnMarket";
 
 
-let marketAddress = new PublicKey("G87i1dcw9hnni4RBRJEkTn8pP1xK699tmZqrNUCgWNUe");
-
 initializeContext(loadWalletFromEnv()).then((context) => {
     // console.log(context);
-    initUserOnMarket(context, marketAddress).then((res) => {
+    initUserOnMarket(context, MARKET).then((res) => {
         console.log(res);
     });
 });
