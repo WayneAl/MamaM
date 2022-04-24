@@ -50,6 +50,9 @@ impl Exchange {
 pub struct Amm {
     pub market: MarketData,
 
+    pub vault_1: Pubkey,
+    pub vault_2: Pubkey,
+
     pub ema: u64,
     pub timestamp: u64, // in secs
 

@@ -53,6 +53,9 @@ pub fn handle(
     let exchange = &mut ctx.accounts.exchange;
     let amm = &mut ctx.accounts.amm;
 
+    amm.vault_1 = ctx.accounts.vault_1.key();
+    amm.vault_2 = ctx.accounts.vault_2.key();
+
     amm.length = length;
     amm.time_granularity = time_granularity;
     amm.range = range;

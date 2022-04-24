@@ -26,4 +26,4 @@ export const USDC = new PublicKey("GTc2YHEFLW7ZgGxBtSCMMGXK9RDJHA6q5YWPdSjU9fsM"
 
 
 export const MARKET = new PublicKey("G87i1dcw9hnni4RBRJEkTn8pP1xK699tmZqrNUCgWNUe");
-export const AMM = new PublicKey("2QKLsMS6JGJ4CqP4SrrcugmvX52sV9ZvrdRBjpKPgvpm");
+export const AMM = new PublicKey("A8aUiXBRraq45XkEFQzHTbtG4yjGYFvFydxpePyWJ9Tk");

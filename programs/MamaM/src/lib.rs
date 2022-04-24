@@ -52,6 +52,10 @@ pub mod mamam {
         amm::initialize_amm::handle(ctx, bump, length, time_granularity, range)
     }
 
+    pub fn deposit_amm(ctx: Context<DepositAmm>, value_1: u64, value_2: u64) -> ProgramResult {
+        amm::deposit_amm::handle(ctx, value_1, value_2)
+    }
+
     pub fn update_price(ctx: Context<UpdatePrice>) -> ProgramResult {
         amm::update_price::handle(ctx)
     }

@@ -332,6 +332,66 @@ export type Mamam = {
       ]
     },
     {
+      "name": "depositAmm",
+      "accounts": [
+        {
+          "name": "exchange",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "amm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "value1",
+          "type": "u64"
+        },
+        {
+          "name": "value2",
+          "type": "u64"
+        }
+      ]
+    },
+    {
       "name": "updatePrice",
       "accounts": [
         {
@@ -351,6 +411,71 @@ export type Mamam = {
         },
         {
           "name": "oracle2",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "openOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "bids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "asks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumDexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
           "isMut": false,
           "isSigner": false
         }
@@ -397,6 +522,14 @@ export type Mamam = {
             "type": {
               "defined": "MarketData"
             }
+          },
+          {
+            "name": "vault1",
+            "type": "publicKey"
+          },
+          {
+            "name": "vault2",
+            "type": "publicKey"
           },
           {
             "name": "ema",
@@ -878,6 +1011,66 @@ export const IDL: Mamam = {
       ]
     },
     {
+      "name": "depositAmm",
+      "accounts": [
+        {
+          "name": "exchange",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "amm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userToken2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "value1",
+          "type": "u64"
+        },
+        {
+          "name": "value2",
+          "type": "u64"
+        }
+      ]
+    },
+    {
       "name": "updatePrice",
       "accounts": [
         {
@@ -897,6 +1090,71 @@ export const IDL: Mamam = {
         },
         {
           "name": "oracle2",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "openOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "bids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "asks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumDexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
           "isMut": false,
           "isSigner": false
         }
@@ -943,6 +1201,14 @@ export const IDL: Mamam = {
             "type": {
               "defined": "MarketData"
             }
+          },
+          {
+            "name": "vault1",
+            "type": "publicKey"
+          },
+          {
+            "name": "vault2",
+            "type": "publicKey"
           },
           {
             "name": "ema",
