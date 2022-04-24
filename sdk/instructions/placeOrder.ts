@@ -2,13 +2,13 @@ import Context from "../types/context";
 import * as anchor from "@project-serum/anchor";
 import {
     PublicKey,
-    SystemProgram,
     SYSVAR_RENT_PUBKEY,
     TransactionSignature
 } from "@solana/web3.js";
-import { SERUM_DEX_PROGRAM_ID } from "../constants";
+import { BTC, SERUM_DEX_PROGRAM_ID, USDC } from "../constants";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { getSerumMarket } from "../utils/serum";
+import { findAssociatedTokenAccount } from "../utils/pda";
 
 export default function placeOrder(context: Context,
     marketAddress: PublicKey,
@@ -41,6 +41,12 @@ export default function placeOrder(context: Context,
             context.program.programId
         );
 
+        let token = await getTokenMint(side);
+
+        let [orderPayer,] = await findAssociatedTokenAccount(
+            context, token
+        );
+
         // Add your test here.
         context.program.rpc.placeOrder(
             new anchor.BN(side),
@@ -51,6 +57,7 @@ export default function placeOrder(context: Context,
                 accounts: {
                     exchange: exchange,
                     user: context.provider.wallet.publicKey,
+                    orderPayer: orderPayer,
                     market:
                         marketAddress,
                     openOrders:
@@ -78,4 +85,17 @@ export default function placeOrder(context: Context,
             }).catch((err) => reject(err))
 
     });
+}
+
+export function getTokenMint(
+    side: number,
+): Promise<PublicKey> {
+    return new Promise(async (resolve, reject) => {
+        if (side == 0) {
+            resolve(USDC)
+        }
+        else if (side == 1) {
+            resolve(BTC)
+        };
+    })
 }

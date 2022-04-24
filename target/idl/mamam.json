@@ -179,6 +179,11 @@
           "isSigner": true
         },
         {
+          "name": "orderPayer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "market",
           "isMut": true,
           "isSigner": false

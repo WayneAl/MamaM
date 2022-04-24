@@ -179,6 +179,11 @@ export type Mamam = {
           "isSigner": true
         },
         {
+          "name": "orderPayer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "market",
           "isMut": true,
           "isSigner": false
@@ -713,6 +718,11 @@ export const IDL: Mamam = {
           "name": "user",
           "isMut": false,
           "isSigner": true
+        },
+        {
+          "name": "orderPayer",
+          "isMut": true,
+          "isSigner": false
         },
         {
           "name": "market",

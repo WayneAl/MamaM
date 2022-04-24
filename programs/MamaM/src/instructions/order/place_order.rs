@@ -16,6 +16,10 @@ pub struct PlaceOrderContext<'info> {
     #[account(signer)]
     pub user: AccountInfo<'info>,
 
+    // ata of user
+    #[account(mut)]
+    pub order_payer: AccountInfo<'info>,
+
     /// the serum market(orderbook)
     #[account(mut)]
     pub market: AccountInfo<'info>,
@@ -72,7 +76,7 @@ pub fn handle(
     let token_program = &ctx.accounts.token_program;
     let rent = &ctx.accounts.rent.to_account_info();
     let dex_program = &ctx.accounts.serum_dex_program_id;
-
+    let order_payer = &ctx.accounts.order_payer;
     // order_payer account should be usdc vault(margin account) if order is Bid
     // and long token vault for
     let order_type = OrderType::Limit;
@@ -99,7 +103,7 @@ pub fn handle(
         event_queue,
         market_bids,
         market_asks,
-        user,
+        order_payer,
         user,
         coin_vault,
         pc_vault,
