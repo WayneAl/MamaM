@@ -257,6 +257,14 @@ export declare type MamamIDL = {
     }, {
         "name": "updatePrice";
         "accounts": [{
+            "name": "exchange";
+            "isMut": true;
+            "isSigner": false;
+        }, {
+            "name": "amm";
+            "isMut": true;
+            "isSigner": false;
+        }, {
             "name": "oracle1";
             "isMut": false;
             "isSigner": false;
