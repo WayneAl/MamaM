@@ -8,3 +8,5 @@ target/release
 target/.rustc_info.json
 **/*.rs.bk
 node_modules
+lib
+lib/*
