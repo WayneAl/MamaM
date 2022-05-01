@@ -402,6 +402,10 @@ export declare type MamamIDL = {
             "isMut": true;
             "isSigner": false;
         }, {
+            "name": "pruneAuthority";
+            "isMut": false;
+            "isSigner": false;
+        }, {
             "name": "serumDexProgramId";
             "isMut": false;
             "isSigner": false;

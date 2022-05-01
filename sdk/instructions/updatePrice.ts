@@ -36,10 +36,14 @@ export default function updatePrice(context: Context, amm: PublicKey): Promise<T
             context.program.programId
         );
 
-        console.log("serumOpenOrders", serumOpenOrders.toString());
-        console.log("ammAccount.vault1", ammAccount.vault1.toString());
-        console.log("ammAccount.vault2", ammAccount.vault2.toString());
+        let [authorityAddress,] = await anchor.web3.PublicKey.findProgramAddress(
+            [Buffer.from("serum_market_auth"), exchange.toBuffer()],
+            context.program.programId
+        );
 
+        // console.log("serumOpenOrders", serumOpenOrders.toString());
+        // console.log("ammAccount.vault1", ammAccount.vault1.toString());
+        // console.log("ammAccount.vault2", ammAccount.vault2.toString());
 
         context.program.rpc.updatePrice(
             {
@@ -68,6 +72,7 @@ export default function updatePrice(context: Context, amm: PublicKey): Promise<T
                     pcVault:
                         serumMarket.decoded
                             .quoteVault,
+                    pruneAuthority: authorityAddress,
                     serumDexProgramId: SERUM_DEX_PROGRAM_ID,
                     tokenProgram: TOKEN_PROGRAM_ID,
                     rent: SYSVAR_RENT_PUBKEY

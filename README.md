@@ -39,3 +39,5 @@ paste to constant to sdk/constants.ts
 ts-node sdk/scripts/depositAmm.ts
 
 ts-node sdk/scripts/updatePrice.ts
+
+ts-node sdk/scripts/crankUpdatePrice.ts

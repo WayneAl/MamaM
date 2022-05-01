@@ -293,13 +293,6 @@ pub fn serum_settle_funds_for_user<'info>(
     )
 }
 
-/// 0. `[writable]` market
-/// 1. `[writable]` bids
-/// 2. `[writable]` asks
-/// 3. `[signer]` prune authority
-/// 4. `[]` open orders.
-/// 5. `[]` open orders owner.
-/// 6. `[writable]` event queue.
 pub fn serum_prune_orders_for_user<'info>(
     dex_program: &AccountInfo<'info>,
     serum_market: &AccountInfo<'info>,
@@ -308,7 +301,6 @@ pub fn serum_prune_orders_for_user<'info>(
     prune_authority: &AccountInfo<'info>,
     open_orders_account: &AccountInfo<'info>,
     open_orders_account_owner: &AccountInfo<'info>,
-    open_orders_account_owner_bump: u8,
     event_queue: &AccountInfo<'info>,
     program_id: &Pubkey,
     exchange: &Pubkey,

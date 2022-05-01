@@ -521,6 +521,11 @@ export type Mamam = {
           "isSigner": false
         },
         {
+          "name": "pruneAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
           "name": "serumDexProgramId",
           "isMut": false,
           "isSigner": false
@@ -1257,6 +1262,11 @@ export const IDL: Mamam = {
         {
           "name": "pcVault",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pruneAuthority",
+          "isMut": false,
           "isSigner": false
         },
         {

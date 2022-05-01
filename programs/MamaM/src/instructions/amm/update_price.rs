@@ -1,3 +1,4 @@
+use crate::instructions::order::serum_utils::serum_prune_orders_for_user;
 use crate::{serum_new_order_with_client_order_id, u_to_f_repr};
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::entrypoint::ProgramResult;
@@ -42,6 +43,7 @@ pub struct UpdatePrice<'info> {
     pub coin_vault: AccountInfo<'info>,
     #[account(mut)]
     pub pc_vault: AccountInfo<'info>,
+    pub prune_authority: AccountInfo<'info>,
     pub serum_dex_program_id: AccountInfo<'info>,
     #[account(address = token::ID)]
     pub token_program: AccountInfo<'info>,
@@ -97,6 +99,7 @@ pub fn handle(ctx: Context<UpdatePrice>) -> ProgramResult {
     let market_asks = &ctx.accounts.asks;
     let coin_vault = &ctx.accounts.coin_vault;
     let pc_vault = &ctx.accounts.pc_vault;
+    let prune_authority = &ctx.accounts.prune_authority;
     let token_program = &ctx.accounts.token_program;
     let rent = &ctx.accounts.rent.to_account_info();
     let dex_program = &ctx.accounts.serum_dex_program_id;
@@ -119,6 +122,24 @@ pub fn handle(ctx: Context<UpdatePrice>) -> ProgramResult {
     let (amm_pda, bump2) = get_amm_pda(&market_key, ctx.program_id, config_str.clone());
 
     assert_eq!(amm_pda, amm.key());
+
+    // Prune previous orders
+    for _ in 0..2 {
+        serum_prune_orders_for_user(
+            dex_program,
+            market,
+            market_bids,
+            market_asks,
+            prune_authority,
+            open_orders,
+            &amm.to_account_info(),
+            event_queue,
+            &ctx.program_id,
+            &exchange.key(),
+        )?;
+    }
+
+    // Place new orders
 
     let signer_seeds: &[&[&[u8]]] = &[
         &[
