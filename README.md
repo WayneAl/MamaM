@@ -75,3 +75,11 @@ amm:  BLwsrXqvao29rKFLJ9D4Nj2HXCokc48YkafQwih78eZo
 **Run AMM continuosly**
 
 `ts-node sdk/scripts/crankUpdatePrice.ts`
+
+
+## Todo
+
+AMM LP token
+
+withdraw from AMM
+
