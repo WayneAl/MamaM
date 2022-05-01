@@ -7,7 +7,7 @@ mod utils;
 use anchor_lang::prelude::*;
 use instructions::*;
 
-declare_id!("AYNnLtb3oTu9KWLuiaGzDQs4NKmUqJ73FP8w4rg5e3zP");
+declare_id!("3HGwuAEzU8vtqZasvKsYWF34cdw7j4y3AbtWJo1BrN19");
 
 #[program]
 pub mod mamam {
@@ -50,6 +50,10 @@ pub mod mamam {
         range: u64,
     ) -> ProgramResult {
         amm::initialize_amm::handle(ctx, bump, length, time_granularity, range)
+    }
+
+    pub fn init_amm_on_market(ctx: Context<InitAmmOnMarket>, bump: u8) -> ProgramResult {
+        init_amm_on_market::handle(ctx, bump)
     }
 
     pub fn deposit_amm(ctx: Context<DepositAmm>, value_1: u64, value_2: u64) -> ProgramResult {

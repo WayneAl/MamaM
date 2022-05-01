@@ -332,6 +332,62 @@ export type Mamam = {
       ]
     },
     {
+      "name": "initAmmOnMarket",
+      "accounts": [
+        {
+          "name": "exchange",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarketAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumDexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "amm",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "bump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
       "name": "depositAmm",
       "accounts": [
         {
@@ -518,30 +574,14 @@ export type Mamam = {
         "kind": "struct",
         "fields": [
           {
-            "name": "marketData",
+            "name": "market",
             "type": {
               "defined": "MarketData"
             }
           },
           {
-            "name": "market",
+            "name": "marketAddress",
             "type": "publicKey"
-          },
-          {
-            "name": "pairName",
-            "type": "string"
-          },
-          {
-            "name": "asset1",
-            "type": {
-              "defined": "AssetData"
-            }
-          },
-          {
-            "name": "asset2",
-            "type": {
-              "defined": "AssetData"
-            }
           },
           {
             "name": "vault1",
@@ -1031,6 +1071,62 @@ export const IDL: Mamam = {
       ]
     },
     {
+      "name": "initAmmOnMarket",
+      "accounts": [
+        {
+          "name": "exchange",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarketAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumDexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "amm",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "bump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
       "name": "depositAmm",
       "accounts": [
         {
@@ -1217,30 +1313,14 @@ export const IDL: Mamam = {
         "kind": "struct",
         "fields": [
           {
-            "name": "marketData",
+            "name": "market",
             "type": {
               "defined": "MarketData"
             }
           },
           {
-            "name": "market",
+            "name": "marketAddress",
             "type": "publicKey"
-          },
-          {
-            "name": "pairName",
-            "type": "string"
-          },
-          {
-            "name": "asset1",
-            "type": {
-              "defined": "AssetData"
-            }
-          },
-          {
-            "name": "asset2",
-            "type": {
-              "defined": "AssetData"
-            }
           },
           {
             "name": "vault1",

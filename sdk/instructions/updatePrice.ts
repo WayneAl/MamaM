@@ -21,7 +21,7 @@ export default function updatePrice(context: Context, amm: PublicKey): Promise<T
 
         let ammAccount = await context.program.account.amm.fetch(amm);
 
-        let marketAddress = ammAccount.market;
+        let marketAddress = ammAccount.marketAddress;
 
         let serumMarket = await getSerumMarket(context, marketAddress);
 
@@ -31,10 +31,15 @@ export default function updatePrice(context: Context, amm: PublicKey): Promise<T
                 Buffer.from("serum_open_orders"),
                 exchange.toBuffer(),
                 marketAddress.toBuffer(),
-                context.provider.wallet.publicKey.toBuffer()
+                amm.toBuffer()
             ],
             context.program.programId
         );
+
+        console.log("serumOpenOrders", serumOpenOrders.toString());
+        console.log("ammAccount.vault1", ammAccount.vault1.toString());
+        console.log("ammAccount.vault2", ammAccount.vault2.toString());
+
 
         context.program.rpc.updatePrice(
             {
@@ -45,7 +50,6 @@ export default function updatePrice(context: Context, amm: PublicKey): Promise<T
                     oracle2: USDC_ORACLE,
                     vault1: ammAccount.vault1,
                     vault2: ammAccount.vault2,
-
                     market:
                         marketAddress,
                     openOrders:

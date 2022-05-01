@@ -14,15 +14,16 @@ anchor build
 
 anchor deploy
 
+yarn idl      
+yarn build
 yarn install
 
 ts-node sdk/scripts/initializeExchange.ts
 
 ts-node sdk/scripts/initializeMarket.ts 
 
-market:  96ZMWkxucCVwgwXLqQ5s4enmHvmKKnWH39V8ez44hK4M
-
-paste to constant and yarn install again
+market:  FrYYFp9d6pGkkavEKTT3YwJnUBX3Qiqjr1iSuHKR6pqe
+paste to constant to sdk/constants.ts
 
 ts-node sdk/scripts/initUserOnMarket.ts
 
@@ -31,3 +32,10 @@ ts-node sdk/scripts/placeOrder.ts
 ts-node sdk/scripts/loadOrderbook.ts
 
 ts-node sdk/scripts/initializeAmm.ts
+
+amm:  BLwsrXqvao29rKFLJ9D4Nj2HXCokc48YkafQwih78eZo
+paste to constant to sdk/constants.ts
+
+ts-node sdk/scripts/depositAmm.ts
+
+ts-node sdk/scripts/updatePrice.ts

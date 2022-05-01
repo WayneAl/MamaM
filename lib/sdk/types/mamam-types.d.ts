@@ -255,6 +255,49 @@ export declare type MamamIDL = {
             "type": "u64";
         }];
     }, {
+        "name": "initAmmOnMarket";
+        "accounts": [{
+            "name": "exchange";
+            "isMut": false;
+            "isSigner": false;
+        }, {
+            "name": "serumOpenOrders";
+            "isMut": true;
+            "isSigner": false;
+        }, {
+            "name": "serumMarket";
+            "isMut": false;
+            "isSigner": false;
+        }, {
+            "name": "serumMarketAuthority";
+            "isMut": false;
+            "isSigner": false;
+        }, {
+            "name": "serumDexProgramId";
+            "isMut": false;
+            "isSigner": false;
+        }, {
+            "name": "amm";
+            "isMut": false;
+            "isSigner": false;
+        }, {
+            "name": "payer";
+            "isMut": true;
+            "isSigner": true;
+        }, {
+            "name": "systemProgram";
+            "isMut": false;
+            "isSigner": false;
+        }, {
+            "name": "rent";
+            "isMut": false;
+            "isSigner": false;
+        }];
+        "args": [{
+            "name": "bump";
+            "type": "u8";
+        }];
+    }, {
         "name": "depositAmm";
         "accounts": [{
             "name": "exchange";
@@ -401,26 +444,13 @@ export declare type MamamIDL = {
         "type": {
             "kind": "struct";
             "fields": [{
-                "name": "marketData";
+                "name": "market";
                 "type": {
                     "defined": "MarketData";
                 };
             }, {
-                "name": "market";
+                "name": "marketAddress";
                 "type": "publicKey";
-            }, {
-                "name": "pairName";
-                "type": "string";
-            }, {
-                "name": "asset1";
-                "type": {
-                    "defined": "AssetData";
-                };
-            }, {
-                "name": "asset2";
-                "type": {
-                    "defined": "AssetData";
-                };
             }, {
                 "name": "vault1";
                 "type": "publicKey";
@@ -535,6 +565,9 @@ export declare type MamamIDL = {
             }];
         };
     }];
+    "metadata": {
+        "address": "3HGwuAEzU8vtqZasvKsYWF34cdw7j4y3AbtWJo1BrN19";
+    };
 };
 import { IdlAccounts } from '@project-serum/anchor';
 export declare type ErrorCode = Record<string, Record<string, any>>;

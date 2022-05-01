@@ -9,3 +9,14 @@ pub fn get_serum_market_auth_pda(exchange: &Pubkey, program_id: &Pubkey) -> (Pub
         program_id,
     )
 }
+
+pub fn get_amm_pda(market: &Pubkey, program_id: &Pubkey, config_str: String) -> (Pubkey, u8) {
+    Pubkey::find_program_address(
+        &[
+            "Amm".as_bytes(),
+            market.key().as_ref(),
+            config_str.as_bytes(),
+        ],
+        program_id,
+    )
+}

@@ -48,13 +48,10 @@ impl Exchange {
 #[account]
 #[derive(Debug)]
 pub struct Amm {
-    pub market_data: MarketData,
+    pub market: MarketData,
 
     // temp
-    pub market: Pubkey,
-    pub pair_name: String,
-    pub asset_1: AssetData,
-    pub asset_2: AssetData,
+    pub market_address: Pubkey,
 
     pub vault_1: Pubkey,
     pub vault_2: Pubkey,

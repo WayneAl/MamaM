@@ -55,7 +55,7 @@ pub fn handle(
 
     amm.vault_1 = ctx.accounts.vault_1.key();
     amm.vault_2 = ctx.accounts.vault_2.key();
-    amm.market = ctx.accounts.market.key();
+    amm.market_address = ctx.accounts.market.key();
 
     amm.length = length;
     amm.time_granularity = time_granularity;
@@ -76,17 +76,18 @@ pub fn handle(
         price.price
     };
     let price_2 = {
-        let oracle_data = ctx.accounts.oracle_2.try_borrow_data()?;
-        let price_account = pyth_client::load_price(&oracle_data).unwrap();
+        // let oracle_data = ctx.accounts.oracle_2.try_borrow_data()?;
+        // let price_account = pyth_client::load_price(&oracle_data).unwrap();
 
-        let price: PriceConf = price_account.get_current_price().unwrap();
-        msg!(
-            "price: ({} +- {}) x 10^{}",
-            price.price,
-            price.conf,
-            price.expo
-        );
-        price.price
+        // let price: PriceConf = price_account.get_current_price().unwrap();
+        // msg!(
+        //     "price: ({} +- {}) x 10^{}",
+        //     price.price,
+        //     price.conf,
+        //     price.expo
+        // );
+        // price.price
+        100000000
     };
 
     amm.ema = f_to_u_repr!(price_1 as f32 / price_2 as f32);

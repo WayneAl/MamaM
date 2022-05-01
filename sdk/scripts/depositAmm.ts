@@ -4,8 +4,8 @@ import { loadWalletFromEnv } from "../initializeContext";
 import depositAmm from "../instructions/depositAmm";
 
 
-let value1 = 10 * (10 ** 9);
-let value2 = 10 * (10 ** 9);
+let value1 = 100000 * (10 ** 9);
+let value2 = 100000 * (10 ** 9);
 
 
 initializeContext(loadWalletFromEnv()).then((context) => {

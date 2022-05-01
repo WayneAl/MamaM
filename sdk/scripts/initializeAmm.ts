@@ -3,7 +3,7 @@ import initializeContext from "../initializeContext";
 import { loadWalletFromEnv } from "../initializeContext";
 import initializeAmm from "../instructions/initializeAmm";
 
-let length = 21;
+let length = 50;
 let time_granularity = 30;
 let range = 0.001 * (10 ** 6);
 

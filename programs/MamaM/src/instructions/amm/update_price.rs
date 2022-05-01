@@ -8,7 +8,7 @@ use std::convert::TryFrom;
 
 use crate::f_to_u_repr;
 use crate::instructions::state::{Amm, Exchange};
-use crate::utils::{get_serum_market_auth_pda, PREFIX_SERUM_MARKET_AUTH};
+use crate::utils::{get_amm_pda, get_serum_market_auth_pda, PREFIX_SERUM_MARKET_AUTH};
 
 #[derive(Accounts)]
 pub struct UpdatePrice<'info> {
@@ -65,17 +65,18 @@ pub fn handle(ctx: Context<UpdatePrice>) -> ProgramResult {
         price.price
     };
     let price_2 = {
-        let oracle_data = ctx.accounts.oracle_2.try_borrow_data()?;
-        let price_account = pyth_client::load_price(&oracle_data).unwrap();
+        // let oracle_data = ctx.accounts.oracle_2.try_borrow_data()?;
+        // let price_account = pyth_client::load_price(&oracle_data).unwrap();
 
-        let price: PriceConf = price_account.get_current_price().unwrap();
-        msg!(
-            "price: ({} +- {}) x 10^{}",
-            price.price,
-            price.conf,
-            price.expo
-        );
-        price.price
+        // let price: PriceConf = price_account.get_current_price().unwrap();
+        // msg!(
+        //     "price: ({} +- {}) x 10^{}",
+        //     price.price,
+        //     price.conf,
+        //     price.expo
+        // );
+        // price.price
+        100000000
     };
 
     let price = price_1 as f32 / price_2 as f32;
@@ -107,12 +108,31 @@ pub fn handle(ctx: Context<UpdatePrice>) -> ProgramResult {
     let now = Clock::get().unwrap().unix_timestamp as u64;
 
     let exchange_key = exchange.clone().key();
+
     let (_market_auth, bump) = get_serum_market_auth_pda(&exchange_key, ctx.program_id);
-    let signer_seeds: &[&[&[u8]]] = &[&[
-        PREFIX_SERUM_MARKET_AUTH.as_bytes(),
-        exchange_key.as_ref(),
-        &[bump],
-    ]];
+
+    let length: u64 = amm.length;
+    let time_granularity: u64 = amm.time_granularity;
+    let range: u64 = amm.range;
+    let config_str = length.to_string() + &time_granularity.to_string() + &range.to_string();
+    let market_key = market.key();
+    let (amm_pda, bump2) = get_amm_pda(&market_key, ctx.program_id, config_str.clone());
+
+    assert_eq!(amm_pda, amm.key());
+
+    let signer_seeds: &[&[&[u8]]] = &[
+        &[
+            "Amm".as_bytes(),
+            market_key.as_ref(),
+            config_str.as_bytes(),
+            &[bump2],
+        ],
+        &[
+            PREFIX_SERUM_MARKET_AUTH.as_bytes(),
+            exchange_key.as_ref(),
+            &[bump],
+        ],
+    ];
 
     let range = u_to_f_repr!(amm.range);
     // Update Bid

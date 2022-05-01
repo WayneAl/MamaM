@@ -48,8 +48,6 @@ export default function initializeAmm(
 
         let minimumRentBalances = await getMinimumRentBalances(context);
 
-        let vaultSignerNonce = await deriveVaultNonce(marketAddress, SERUM_DEX_PROGRAM_ID);
-
         await initializeAccountsWithLayouts(
             context,
             minimumRentBalances,
@@ -57,7 +55,7 @@ export default function initializeAmm(
             vault2,
             BTC,
             USDC,
-            vaultSignerNonce[0],
+            amm, // vault owner
         );
 
 

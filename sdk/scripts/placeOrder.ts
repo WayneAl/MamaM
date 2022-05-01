@@ -5,8 +5,8 @@ import { loadWalletFromEnv } from "../initializeContext";
 import placeOrder from "../instructions/placeOrder";
 
 
-let side = 0; // Bid = 0, Ask = 1,
-let price = 1000;
+let side = 1; // Bid = 0, Ask = 1,
+let price = 39835;
 let size = 1;
 
 initializeContext(loadWalletFromEnv()).then((context) => {
