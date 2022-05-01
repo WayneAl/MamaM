@@ -1,6 +1,6 @@
 {
   "name": "mamam-sdk",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "TypeScript interfaces for MamaM",
   "dependencies": {
     "@project-serum/anchor": "^0.18.2",
